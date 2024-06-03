@@ -20,6 +20,14 @@ test('GET /genres mostrar todos los generos', async () => {
     expect(res.body.name).toBe(newGenre.name);
  });
 
+ test('GET /genres/:id debe retornar el genero seleccionado', async () => { 
+   const res = await request(app).get(`/genres/${id}`);
+   expect(res.status).toBe(200);
+   expect(res.body).toBeDefined();
+   expect(res.body.id).toBe(id);
+   expect(res.body.name).toBeDefined();
+});
+
  test('PUT /genres/:id debe actualizar el genero seleccionado', async () => { 
     const updatedGenre = {
         name: 'genios'

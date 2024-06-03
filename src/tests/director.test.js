@@ -24,6 +24,13 @@ test('GET /directors mostrar todos los directores', async () => {
     expect(res.body.name).toBe(newDirector.name);
  });
 
+ test('GET /directors/:id debe retornar el director seleccionado', async () => { 
+   const res = await request(app).get(`/directors/${id}`);
+   expect(res.status).toBe(200);
+   expect(res.body).toBeDefined();
+   expect(res.body.id).toBe(id);
+});
+
  test('PUT /directors/:id debe actualizar el director seleccionado', async () => { 
     const updatedDirector = {
         firstName: "Steven Allan",

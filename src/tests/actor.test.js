@@ -24,6 +24,13 @@ test('GET /actors mostrar todos los actores', async () => {
     expect(res.body.name).toBe(newActor.name);
  });
 
+ test('GET /actors/:id debe retornar el actor seleccionado', async () => { 
+   const res = await request(app).get(`/actors/${id}`);
+   expect(res.status).toBe(200);
+   expect(res.body).toBeDefined();
+   expect(res.body.id).toBe(id);
+});
+
  test('PUT /actors/:id debe actualizar el actor seleccionado', async () => { 
     const updatedActor = {
         firstName: 'Chen ', 

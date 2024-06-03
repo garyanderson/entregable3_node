@@ -26,6 +26,14 @@ test('GET /movies mostrar todas las peliculas', async () => {
     expect(res.body.name).toBe(newMovie.name);
  });
 
+ test('GET /movies/:id debe retornar la pelicula seleccionada', async () => { 
+    const res = await request(app).get(`/movies/${id}`);
+    expect(res.status).toBe(200);
+    expect(res.body).toBeDefined();
+    expect(res.body.id).toBe(id);
+    expect(res.body.name).toBeDefined();
+});
+
  test('PUT /movies/:id debe actualizar la pelicula seleccionada', async () => { 
     const updatedovie = {
         name: "la prueba para editar, perros",
